@@ -4,8 +4,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 import { Layout } from "@/components/Layout";
-import { DashboardPage, CustomersPage } from "@/pages";
+import {
+  DashboardPage,
+  CustomersPage,
+  ProductsPage,
+  OrdersPage,
+} from "@/pages";
 import { AddCustomerPage } from "./pages/AddCustomerPage";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +30,22 @@ const router = createBrowserRouter([
         path: "add-customer",
         element: <AddCustomerPage />,
       },
+      {
+        path: "products",
+        element: <ProductsPage />,
+      },
+      {
+        path: "orders",
+        element: <OrdersPage />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <ChakraProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </ChakraProvider>
 );

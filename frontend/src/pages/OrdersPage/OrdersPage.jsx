@@ -5,16 +5,20 @@ import { UserNav } from "./components/UserNav";
 import { navigationLinks } from "../../config/navigationLinks";
 import { useEffect, useState } from "react";
 
-export const CustomersPage = () => {
+export const OrdersPage = () => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/customers/")
+  const fetchOrders = () => {
+    fetch("http://127.0.0.1:8000/orders/")
       .then((response) => response.json())
       .then((data) => {
         setData(data)
         console.log(data)
       });
+  }
+
+  useEffect(() => {
+    fetchOrders();
   }, []);
 
   return (
@@ -29,12 +33,13 @@ export const CustomersPage = () => {
       </div>
       <div className="flex-1 space-y-4 p-8 pt-6">
         <div className="flex items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">Customers</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Orders</h2>
         </div>
         <div className="hidden h-full flex-1 flex-col space-y-8 md:flex">
           <DataTable
-            data={data.length > 0 ? data : [{name: "Loading...", surname: "", email: "", id: 0, phone_number: ""}]}
+            data={data}
             columns={Columns}
+            refresh={fetchOrders}
           />
         </div>
       </div>
