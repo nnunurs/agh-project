@@ -1,7 +1,6 @@
 import { Checkbox } from "@/components/ui/Checkbox";
 
 import { DataTableColumnHeader } from "./DataTableColumnHeader";
-import { DataTableRowActions } from "./DataTableRowActions";
 
 export const Columns = [
   {
@@ -40,7 +39,9 @@ export const Columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Surname" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("surname")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px]">{row.getValue("surname")}</div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -74,9 +75,5 @@ export const Columns = [
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
-  },  
-  {
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];

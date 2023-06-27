@@ -1,7 +1,6 @@
 import { Checkbox } from "@/components/ui/Checkbox";
 
 import { DataTableColumnHeader } from "./DataTableColumnHeader";
-import { DataTableRowActions } from "./DataTableRowActions";
 
 export const Columns = [
   {
@@ -40,7 +39,9 @@ export const Columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Description" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("description")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px]">{row.getValue("description")}</div>
+    ),
     enableSorting: false,
     enableHiding: true,
   },
@@ -59,10 +60,4 @@ export const Columns = [
       );
     },
   },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      return <DataTableRowActions row={row}/>
-  }},
 ];

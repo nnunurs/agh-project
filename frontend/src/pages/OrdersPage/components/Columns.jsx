@@ -1,8 +1,6 @@
 import { Checkbox } from "@/components/ui/Checkbox";
 
 import { DataTableColumnHeader } from "./DataTableColumnHeader";
-import { DataTableRowActions } from "./DataTableRowActions";
-
 
 export const Columns = [
   {
@@ -32,7 +30,9 @@ export const Columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Customer" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("customer_id")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px]">{row.getValue("customer_id")}</div>
+    ),
     enableSorting: true,
     enableHiding: false,
   },
@@ -41,14 +41,10 @@ export const Columns = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Items" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("order_items")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px]">{row.getValue("order_items")}</div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      return <DataTableRowActions row={row}/>
-  }},
 ];

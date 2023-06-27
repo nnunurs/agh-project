@@ -39,7 +39,6 @@ export const OrdersPage = () => {
           <DataTable
             data={data}
             columns={Columns}
-            refresh={fetchOrders}
           />
         </div>
       </div>
